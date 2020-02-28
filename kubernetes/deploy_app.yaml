@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: users
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      labels:
+        app: users
+    spec:
+      containers:
+      - name: users
+        image: fbereche/demo-microservices:1.0.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          value: demo-db-service
+        - name: DB_USERNAME
+          value: root
+        - name: DB_PASSWORD
+          value: root

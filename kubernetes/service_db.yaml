@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-db-service
+spec:
+  selector:
+    app: demo-db
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
